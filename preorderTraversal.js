@@ -9,3 +9,17 @@ var preorderTraversal = function (root) {
   }
   return traversal(root, [])
 };
+
+//迭代 栈
+var preorderTraversal = function (root) {
+  let res = [];
+  let stack = [root];
+  if (!root) return res;
+  while (stack.length) {
+    let cur = stack.pop();
+    if (cur.right) stack.push(cur.right);
+    if (cur.left) stack.push(cur.left);
+    res.push(cur.val);
+  }
+  return res;
+};
