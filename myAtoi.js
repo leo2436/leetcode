@@ -46,13 +46,18 @@ class Solution {
   changeState = (char) => {
     this.state = this.table[this.state][this.getCol(char)];
     if (this.state === "signed") {
-      this.sign = char === "+" ? 1 : -1;
+      if (char === "+") {
+        this.sign = 1;
+      } else {
+        this.sign = -1;
+      }
     } else if (this.state === "inNumber") {
       this.res = this.res * 10 + Number(char);
-      this.res =
-        this.sign === 1
-          ? Math.min(this.max, this.res)
-          : Math.min(-this.min, this.res);
+      if (this.sign === 1) {
+        this.res = Math.min(this.max, this.res);
+      } else {
+        this.res = Math.min(-this.min, this.res);
+      }
     }
   };
 }
@@ -60,7 +65,12 @@ class Solution {
 function myAtoi(s) {
   let solution = new Solution();
   for (let char of s) {
+    if (solution.state === "end") return solution.res;
     solution.changeState(char);
   }
+  console.log("solution.sign: ", solution.sign);
   return solution.sign * solution.res;
 }
+
+let res = myAtoi("  -0012a42");
+console.log("res: ", res);
