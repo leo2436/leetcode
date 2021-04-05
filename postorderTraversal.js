@@ -24,3 +24,26 @@ function postorderTraversal(root) {
   }
   return res;
 }
+
+
+var postorderTraversal = function(root) {
+  let res = [];
+  let stack = [];
+  let prev = null;
+  while(stack.length || root) {
+    while(root) {
+      stack.push(root);
+      root = root.left;
+    }
+    root = stack.pop();
+    if (!root.right || root.right === prev) {
+      res.push(root.val);
+      prev = root;
+      root = null;
+    } else {
+      stack.push(root);
+      root = root.right;
+    }
+  }
+  return res;
+};

@@ -27,12 +27,12 @@ var inorderTraversal = function (root) {
   return res;
 };
 
-//node作为val值进入stack
-var inorderTraversal = function(root) {
+//node作为val值进入stack，这样出栈的时候就能优先进入res。
+var inorderTraversal = function (root) {
   let res = [];
   let stack = [];
   stack.push(root);
-  while(stack.length) {
+  while (stack.length) {
     let node = stack.pop();
     if (!node) continue;
     if (node instanceof TreeNode) {
