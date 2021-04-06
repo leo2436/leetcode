@@ -47,3 +47,19 @@ var postorderTraversal = function(root) {
   }
   return res;
 };
+
+// 后序遍历是左右根，reverse一下就是根右左，因此只需和前序遍历方向置换一下即可。
+var postorderTraversal = function(root) {
+  let res = [];
+  let stack = [];
+  while(stack.length || root) {
+    while(root) {
+      res.push(root.val);
+      stack.push(root);
+      root = root.right;
+    }
+    let cur = stack.pop();
+    root = cur.left;
+  }
+  return res.reverse();
+};
