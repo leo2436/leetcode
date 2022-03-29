@@ -37,3 +37,30 @@ function quick(arr) {
 
 let res = quick([5, 4, 3, 2, 1]);
 console.log("res: ", res);
+
+function quickSort(nums) {
+  helper(nums, 0, nums.length - 1);
+  function helper(nums, start, end) {
+    if (start > end) return;
+    let left = start;
+    let right = end;
+    let pivot = nums[(start + end) / 2];
+    while (left <= right) {
+      while (left <= right && nums[left] < pivot) {
+        left++;
+      }
+      while (left <= right && nums[right] > pivot) {
+        right--;
+      }
+    }
+    if (left <= right) {
+      let tmp = nums[left];
+      nums[left] = nums[right];
+      nums[right] = tmp;
+      left++;
+      right--;
+    }
+    // helper(nums, start, right);
+    // helper(nums, , right);
+  }
+}
