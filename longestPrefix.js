@@ -6,7 +6,7 @@ var longestCommonPrefix = function (strs) {
   for (let i = 0; i < first.length; i++) {
     let prefix = first.slice(0, i + 1);
     console.log("prefix: ", prefix);
-    if (strs.every((str) => str.slice(0, i + 1) === prefix)) {
+    if (strs.every(str => str.slice(0, i + 1) === prefix)) {
       res = prefix;
     } else {
       break;
@@ -15,7 +15,7 @@ var longestCommonPrefix = function (strs) {
   return res;
 };
 
-let res = longestCommonPrefix(["a"]);
+let res = longestCommonPrefix(["aaafsd", "aawwewer", "aaddfff"]);
 console.log("res: ", res);
 
 // 横向遍历
@@ -36,18 +36,18 @@ console.log("res: ", res);
 // };
 
 // 纵向遍历
-var longestCommonPrefix = function (strs) {
-  if (!strs.length) return "";
-  let prefix = strs[0];
-  let count = strs.length;
-  for (let i = 0; i < prefix.length; i++) {
-    let c = prefix[i];
-    for (let j = 1; j < count; j++) {
-      let word = strs[j];
-      if (i === word.length || word[i] !== c) {
-        return prefix.substring(0, i);
-      }
-    }
-  }
-  return prefix;
-};
+// var longestCommonPrefix = function (strs) {
+//   if (!strs.length) return "";
+//   let prefix = strs[0];
+//   let count = strs.length;
+//   for (let i = 0; i < prefix.length; i++) {
+//     let c = prefix[i];
+//     for (let j = 1; j < count; j++) {
+//       let word = strs[j];
+//       if (i === word.length || word[i] !== c) {
+//         return prefix.substring(0, i);
+//       }
+//     }
+//   }
+//   return prefix;
+// };
